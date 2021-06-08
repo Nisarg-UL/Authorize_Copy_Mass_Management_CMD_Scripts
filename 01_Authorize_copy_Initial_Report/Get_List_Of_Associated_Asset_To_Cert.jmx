@@ -1153,9 +1153,9 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 			//if ((cert_type == &apos;US Safety Scheme&apos; || cert_type == &apos;Canada Safety Scheme&apos;)) {
 				writeLine(fileWriter, params, SEPARATOR);				
 			//}				
-		//}
+			}
+		}
 	}
-	
 	//proper close to file
 	fileWriter.flush();
 	fileWriter.close();
