@@ -1149,11 +1149,11 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	//****
 	if (!(cert_num.startsWith(&quot;X-&quot;))){
 		if (cert_status != &quot;Obsolete&quot;){
-			if (!(cert_rev_num == &apos;0&apos; &amp;&amp; cert_status == &quot;Under Revision&quot;)) {
+			//if (!(cert_rev_num == &apos;0&apos; &amp;&amp; cert_status == &quot;Under Revision&quot;)) {
 			if ((cert_type == &apos;US Safety Scheme&apos; || cert_type == &apos;Canada Safety Scheme&apos;)) {
 				writeLine(fileWriter, params, SEPARATOR);				
 			}				
-		}
+		//}
 	}
 	
 	//proper close to file
