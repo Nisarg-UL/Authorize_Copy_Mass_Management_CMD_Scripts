@@ -172,7 +172,9 @@ import org.apache.jmeter.services.FileServer;
 
 cal_create_date = new Date().format(&apos;yyyyMMdd&apos;);
 
-String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+${user_number}+&quot;_AuthCopyInput.tsv&quot;;
+String user_no = vars.get(&quot;user_number&quot;);
+
+String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;;
 
 try {
 
@@ -188,7 +190,7 @@ try {
 }
 
 // Open File(s)
-f = new FileOutputStream(FileServer.getFileServer().getBaseDir()+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+${user_number}+&quot;_AuthCopyInput.tsv&quot;, true); 
+f = new FileOutputStream(FileServer.getFileServer().getBaseDir()+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;, true); 
 p = new PrintStream(f); 
 
 // Close File(s)
@@ -291,7 +293,9 @@ String[] params = Arrays.asList(cert_id, cert_type, cert_num, cert_rev_num, cert
 
 cal_create_date = new Date().format(&apos;yyyyMMdd&apos;);
 
-FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+${user_number}+&quot;_AuthCopyInput.tsv&quot;, true);
+String user_no = vars.get(&quot;user_number&quot;);
+
+FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;, true);
 writeLine(fileWriter, params1, SEPARATOR);
 writeLine(fileWriter, params2, SEPARATOR);
 writeLine(fileWriter, params3, SEPARATOR);
@@ -1139,8 +1143,10 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String[] params = Arrays.asList(cert_id, cert_type, cert_num, cert_rev_num, cert_owner, cert_status, cert_applicant_file,  cert_vol, cert_sec, cert_issue_date, cert_new_vol, cert_new_sec, cert_new_issue_date);
 	
 	cal_create_date = new Date().format(&apos;yyyyMMdd&apos;);
+
+	String user_no = vars.get(&quot;user_number&quot;);
 	
-	FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+${user_number}+&quot;_AuthCopyInput.tsv&quot;, true);
+	FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;, true);
 	//****
 	// All Pl&apos;s are out of scope under the perview of Authorized Copy requirement
 	// All (obsolete/expired) certificates are out of scope
