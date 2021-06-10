@@ -2861,6 +2861,14 @@ certificate_status = val2_taxo[5];
 if(certificate_status == null || certificate_status.isEmpty()) {cert_status = &quot;&quot;} else {cert_status = certificate_status.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_Certificate_Status&quot;, cert_status);
 
+new_vol = val2_taxo[-3];
+if(new_vol == null || new_vol.isEmpty()) {new_volume = &quot;&quot;} else {new_volume = new_vol.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_New_Volume&quot;, new_volume);
+
+new_sec = val2_taxo[-2];
+if(new_sec == null || new_sec.isEmpty()) {new_section = &quot;&quot;} else {new_section = new_sec.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_New_Section&quot;, new_section);
+
 new_iss_date = val2_taxo[-1];
 if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot;} else {new_issue_date = new_iss_date.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
