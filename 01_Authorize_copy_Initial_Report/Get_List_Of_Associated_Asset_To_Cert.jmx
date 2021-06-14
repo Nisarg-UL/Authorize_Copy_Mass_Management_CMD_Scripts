@@ -1106,8 +1106,17 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_type = pl_Object.getString(&quot;certificateType&quot;); 
 	String cert_body = pl_Object.getString(&quot;issuingBody&quot;); 
 	String cert_mark = pl_Object.getString(&quot;mark&quot;); 
-	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
-	String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;); 
+	String cert_num = pl_Object.getString(&quot;certificateName&quot;);
+	try {
+		if(pl_Object.keys() != &quot;revisionNumber&quot;) {
+			cert_rev_num = &quot;&quot;; 					
+		} else {
+			String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;); 
+		}
+	}
+	catch (ParseException e) {
+		e.printStackTrace();
+	}	 
 	String cert_owner = pl_Object.getString(&quot;ownerReference&quot;); 
 	String cert_applicant_file = pl_Object.getString(&quot;fileNumber&quot;); 
 	String cert_ccn = pl_Object.getString(&quot;ccn&quot;);
