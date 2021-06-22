@@ -1694,6 +1694,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
           <stringProp name="cacheKey">false</stringProp>
           <stringProp name="script">import java.text.*;
 import java.util.*;
+import java.io.*; 
 import org.apache.jmeter.services.FileServer;
 
 FileReader fr=new FileReader(&quot;${inputfile}&quot;);    
@@ -1708,7 +1709,8 @@ while ((line = br.readLine()) != null) {
 }
 
 vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-19));
-br.close();</stringProp>
+br.close();
+fr.close();    </stringProp>
         </JSR223Sampler>
         <hashTree/>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="false">
