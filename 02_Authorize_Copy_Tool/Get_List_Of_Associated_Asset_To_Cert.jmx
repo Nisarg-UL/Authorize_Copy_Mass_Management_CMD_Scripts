@@ -122,6 +122,11 @@
             <stringProp name="Argument.value">0</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="inputfile" elementType="Argument">
+            <stringProp name="Argument.name">inputfile</stringProp>
+            <stringProp name="Argument.value">${__P(inputfile,)}</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
