@@ -2038,7 +2038,7 @@ if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot
 vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 
 String line;
 int counter = 0;
