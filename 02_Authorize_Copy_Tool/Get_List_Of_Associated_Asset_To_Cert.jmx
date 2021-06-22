@@ -160,7 +160,7 @@
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1690,7 +1690,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -2741,7 +2741,7 @@ try{
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -3704,7 +3704,7 @@ import org.apache.jmeter.services.FileServer;
 //vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 
 String line;
 int counter = 0;
@@ -5028,7 +5028,7 @@ import org.apache.jmeter.services.FileServer;
 //vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 
 String line;
 int counter = 0;
@@ -5578,7 +5578,7 @@ import org.apache.jmeter.services.FileServer;
 //vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 
 String line;
 int counter = 0;
@@ -6320,7 +6320,7 @@ import org.apache.jmeter.services.FileServer;
 //vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 
 String line;
 int counter = 0;
@@ -7393,7 +7393,7 @@ import org.apache.jmeter.services.FileServer;
 //vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 
 String line;
 int counter = 0;
@@ -8012,7 +8012,7 @@ br.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -9025,7 +9025,7 @@ br.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
