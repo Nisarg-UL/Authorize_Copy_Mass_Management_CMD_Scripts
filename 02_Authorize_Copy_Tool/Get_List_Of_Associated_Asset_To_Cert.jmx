@@ -1696,7 +1696,8 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(&quot;${inputfile}&quot;);
+FileReader fr=new FileReader(&quot;${inputfile}&quot;);    
+BufferedReader br = new BufferedReader(fr);
 //BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
 String line;
 int counter = 0;
