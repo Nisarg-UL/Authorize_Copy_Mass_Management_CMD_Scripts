@@ -9,7 +9,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="version" elementType="Argument">
             <stringProp name="Argument.name">version</stringProp>
-            <stringProp name="Argument.value">v5.17</stringProp>
+            <stringProp name="Argument.value">v5.19</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Environment_IP" elementType="Argument">
@@ -24,7 +24,7 @@
           </elementProp>
           <elementProp name="environment" elementType="Argument">
             <stringProp name="Argument.name">environment</stringProp>
-            <stringProp name="Argument.value">PROD</stringProp>
+            <stringProp name="Argument.value">QA</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="grant_type" elementType="Argument">
@@ -54,7 +54,7 @@
           </elementProp>
           <elementProp name="client_secret_QA" elementType="Argument">
             <stringProp name="Argument.name">client_secret_QA</stringProp>
-            <stringProp name="Argument.value">jP5H0Fvr.UrdFiOc-lZ4QwBUePHcQ=_2</stringProp>
+            <stringProp name="Argument.value">oey3KPPqmN4O4vG_DE.mG.~S~-XmzM4SJi</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="client_id_PROD" elementType="Argument">
@@ -69,7 +69,7 @@
           </elementProp>
           <elementProp name="user_number" elementType="Argument">
             <stringProp name="Argument.name">user_number</stringProp>
-            <stringProp name="Argument.value">50696</stringProp>
+            <stringProp name="Argument.value"></stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="owner_ref" elementType="Argument">
@@ -84,12 +84,12 @@
           </elementProp>
           <elementProp name="ccn" elementType="Argument">
             <stringProp name="Argument.name">ccn</stringProp>
-            <stringProp name="Argument.value">AZSQ</stringProp>
+            <stringProp name="Argument.value"></stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cert_scheme" elementType="Argument">
             <stringProp name="Argument.name">cert_scheme</stringProp>
-            <stringProp name="Argument.value">US Safety Scheme</stringProp>
+            <stringProp name="Argument.value"></stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="cert_body" elementType="Argument">
@@ -127,7 +127,7 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(non-PROD)" enabled="false">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(non-PROD)" enabled="true">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
@@ -141,7 +141,7 @@
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)" enabled="true">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)" enabled="false">
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
@@ -350,7 +350,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="03.Auth-Cert-List_of_Certificate_id" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="03.Auth-Cert-List_of_Certificate_id" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;03_list_of_certificate_id.tsv&quot;;
@@ -379,7 +379,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="04.Auth-Cert-List_of_Asset_id" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="04.Auth-Cert-List_of_Asset_id" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;04_list_of_assets.tsv&quot;;
@@ -408,7 +408,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="05a.list_of_Asset_Cert_Link_Ingestion" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="05a.list_of_Asset_Cert_Link_Ingestion" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;05a_list_of_asset_cert_link.tsv&quot;;
@@ -437,7 +437,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="05b.list_of_Asset_Cert_Link_Ingestion" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="05b.list_of_Asset_Cert_Link_Ingestion" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;05b_list_of_asset_cert_link.tsv&quot;;
@@ -466,7 +466,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06a.list_of_appended_asset_id" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06a.list_of_appended_asset_id" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;06a_list_of_appended_asset_id.tsv&quot;;
@@ -495,7 +495,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06b.list_of_appended_certificate_id" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06b.list_of_appended_certificate_id" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;06b_list_of_appended_certificate_id.tsv&quot;;
@@ -524,7 +524,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06c.list_of_asset_link_to_certificate" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06c.list_of_asset_link_to_certificate" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;06c_list_of_asset_link_to_certificate.tsv&quot;;
@@ -553,7 +553,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06d.list_of_asset_certificate_result" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="06d.list_of_asset_certificate_result" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;06d_list_of_asset_certificate_link_result.tsv&quot;;
@@ -582,7 +582,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="07.list_of_parties_with_Auth_Cert" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="07.list_of_parties_with_Auth_Cert" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;07_list_of_parties.tsv&quot;;
@@ -611,7 +611,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="08.list_of_cert_parties_status" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="08.list_of_cert_parties_status" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;08_list_of_cert_parties_status.tsv&quot;;
@@ -640,7 +640,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="09.list_of_decisions_with_Auth_Cert" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="09.list_of_decisions_with_Auth_Cert" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;09_list_of_decisions.tsv&quot;;
@@ -669,7 +669,7 @@ p.close();f.close();</stringProp>
           <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
         </BeanShellSampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.list_of_certified_cert_status" enabled="false">
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="10.list_of_certified_cert_status" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;10_list_of_decisions_status.tsv&quot;;
@@ -1685,7 +1685,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="true">
           <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;20210406_ProjectNo_50696_AuthCopyInput.tsv&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -2033,7 +2033,7 @@ if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot
 vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.txt&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
 
 String line;
 int counter = 0;
@@ -2599,7 +2599,7 @@ writer_decisions.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="02.Remove Duplicates to Create Unique Asset List" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="02.Remove Duplicates to Create Unique Asset List" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -2719,7 +2719,7 @@ try{
         </JSR223Sampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="03.authorize copy - cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="03.authorize copy - cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -2874,7 +2874,7 @@ if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot
 vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.txt&quot;));
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
 
 String line;
 int counter = 0;
@@ -3551,7 +3551,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="04.autorize copy - asset" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="04.autorize copy - asset" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -4219,7 +4219,7 @@ for(int att=0 ; att &lt; asset_att_count; att++){ // iterate through jsonArray
 
 cal_owner = vars.get(&quot;T1_new_owner&quot;);
 if(cal_owner == null || cal_owner == &apos;&apos;) {final_owner = owner} else {final_owner = cal_owner};
-cal_ref = vars.get(&quot;T1_new_applicant&quot;);
+cal_ref = vars.get(&quot;T1_new_listee&quot;);
 if(cal_ref == null || cal_ref == &apos;&apos;) {final_ref = ref_no} else {final_ref = cal_ref};
 //cal_mod = vars.get(&quot;new_model_no&quot;);
 //if(cal_mod == null || cal_mod == &apos;&apos;) {final_model = model_no} else {final_model = cal_mod};
@@ -4640,7 +4640,7 @@ if(product_type == null || product_type.isEmpty()) {prod_type = &quot;&quot;} el
 asset_owner = vars.get(&quot;T1_new_owner&quot;);
 //ref_no = val2_asset_taxo[2];
 //if(ref_no == null || ref_no.isEmpty()) {ref = &quot;&quot;} else {ref = ref_no.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-ref = vars.get(&quot;T1_new_applicant&quot;);
+ref = vars.get(&quot;T1_new_listee&quot;);
 family_series = val2_asset_taxo[3];
 if(family_series == null || family_series.isEmpty() ) {series = &quot;&quot;} else {series = family_series.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 model_no = val2_asset_taxo[4];
@@ -4899,7 +4899,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05a.Generate Asset-cert-Link with Old cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05a.Generate Asset-cert-Link with Old cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -5160,7 +5160,7 @@ ass_owner = vars.get(&quot;T1_new_owner&quot;);
 if(ass_owner == null || ass_owner.isEmpty()) {owner = &quot;&quot;} else {owner = ass_owner};
 vars.put(&quot;owner_ref&quot;, owner);
 
-ref_no = vars.get(&quot;T1_new_applicant&quot;);
+ref_no = vars.get(&quot;T1_new_listee&quot;);
 if(ref_no == null || ref_no.isEmpty()) {ref = &quot;&quot;} else {ref = ref_no};
 vars.put(&quot;ref_no&quot;, ref);
 
@@ -5188,7 +5188,7 @@ certificate_mark = val2_taxo[8].trim().toString();
 if(certificate_mark == null || certificate_mark.isEmpty()) {cert_mark = &quot;&quot;} else {cert_mark = certificate_mark};
 vars.put(&quot;certificate_mark&quot;, cert_mark);
 
-certificate_number = val2_taxo[9].trim().replace(&apos;^&apos;,&apos;,&apos;).toString();
+certificate_number = val2_taxo[9].trim().toString();
 if(certificate_number == null || certificate_number.isEmpty()) {cert_no = &quot;&quot;} else {cert_no = certificate_number};
 vars.put(&quot;certificate_number&quot;, cert_no);
 
@@ -5251,7 +5251,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05b.Generate Asset-cert-Link with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05b.Generate Asset-cert-Link with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -5523,7 +5523,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06a.Asset_Id Thread Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06a.Asset_Id Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -5982,7 +5982,7 @@ result.append(&quot;\&quot;referenceNumber\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${T1_new_applicant}\&quot;&quot;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${T1_new_listee}\&quot;&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;},&quot;);
 result.append(&apos;\n&apos;);
@@ -6265,7 +6265,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06b.Certificate_Id Thread Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06b.Certificate_Id Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -6949,7 +6949,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06c.Asset &amp; Certificate consolidation" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06c.Asset &amp; Certificate consolidation" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7241,7 +7241,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06d.Link Asset To Certificate" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06d.Link Asset To Certificate" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7554,7 +7554,9 @@ result.append(&quot;}&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;],&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;user\&quot;: \&quot;${T1_new_employee_number}\&quot;&quot;);
+user_value = &apos;${T1_new_employee_number}&apos;;
+if(user_value == null || user_value.isEmpty()) {user_val = &quot;&quot;} else {user_val = user_value.replace(&quot;\&quot;&quot;, &quot;&quot;).replace(&quot;\\\\&quot;, &quot;\\\\\\\\&quot;).trim()};
+result.append(&quot;\&quot;user\&quot; : \&quot;GLOBAL\\\\\\\&quot;+user_val+&quot;\&quot;&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;}&quot;);
 
@@ -7698,7 +7700,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="07.Generate Cert-Party-Link with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="07.Generate Cert-Party-Link with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7936,6 +7938,7 @@ for (int a=0; a&lt;${cert_loop_count}; a++) {
 	rev_number = val2_cert_taxo[4];
 	if(rev_number == null || rev_number.isEmpty()) {rev_no = &quot;&quot;} else {rev_no = rev_number.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 	certificate_owner = val2_cert_taxo[5];
+	log.info(&quot;certificate_ownere:&quot; + val2_cert_taxo[5].toString());
 	if(certificate_owner == null || certificate_owner.isEmpty()) {cert_owner = &quot;&quot;} else {cert_owner = certificate_owner.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 	
 	if ((link_cert_type == cert_type) &amp; (link_cert_name == cert_no) &amp; (link_cert_owner == cert_owner)) {
@@ -7959,7 +7962,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="08.Parties Linking in Bulk" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="08.Parties Linking in Bulk" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7993,6 +7996,91 @@ while ((line = br.readLine()) != null) {
 vars.put(&quot;cert_loop_count&quot;,Integer.toString(counter-1));
 //log.info(&quot;cert_loop_count:&quot; + Integer.toString(counter-1));
 br.close();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223_Read-Cert-Report" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import java.text.*;
+import java.util.*;
+import org.apache.jmeter.services.FileServer;
+
+BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;Report_list_of_certificates.tsv&quot;));
+String line;
+int counter = 0;
+while ((line = br.readLine()) != null) {
+	vars.put(&quot;Line_&quot; + counter, (java.util.Arrays.toString(line.split(&quot;\t&quot;))));
+	vars.put(&quot;Line_data&quot; + counter, (line));
+	counter++;
+}
+br.close();
+
+int X = 8;
+String x = &quot;Line_data&quot;;
+String y = new Integer (X).toString();	
+String z = x+y;
+String value_taxo_owner = vars.get(z);
+ArrayList&lt;String&gt; val2_taxo_owner = Arrays.asList(value_taxo_owner.split(&quot;\t&quot;));
+
+new_owner_ref = val2_taxo_owner[1];
+if(new_owner_ref == null || new_owner_ref.isEmpty()) {new_owner = &quot;&quot;} else {new_owner = new_owner_ref.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_owner&quot;, new_owner);
+
+String y1 = new Integer (X+1).toString();	
+String z1 = x+y1;
+String value_taxo_owner_acc = vars.get(z1);
+ArrayList&lt;String&gt; val2_taxo_owner_acc = Arrays.asList(value_taxo_owner_acc.split(&quot;\t&quot;));
+
+new_owner_acc = val2_taxo_owner_acc[1];
+if(new_owner_acc == null || new_owner_acc.isEmpty()) {new_owner_account = &quot;&quot;} else {new_owner_account = new_owner_acc.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_owner_account&quot;, new_owner_account);
+
+String y2 = new Integer (X+2).toString();	
+String z2 = x+y2;
+String value_taxo_applicant = vars.get(z2);
+ArrayList&lt;String&gt; val2_taxo_applicant = Arrays.asList(value_taxo_applicant.split(&quot;\t&quot;));
+
+new_applicant_file = val2_taxo_applicant[1];
+if(new_applicant_file == null || new_applicant_file.isEmpty()) {new_applicant = &quot;&quot;} else {new_applicant = new_applicant_file.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_applicant&quot;, new_applicant);
+
+String y3 = new Integer (X+3).toString();	
+String z3 = x+y3;
+String value_taxo_listee = vars.get(z3);
+ArrayList&lt;String&gt; val2_taxo_listee = Arrays.asList(value_taxo_listee.split(&quot;\t&quot;));
+
+new_listee_file = val2_taxo_listee[1];
+if(new_listee_file == null || new_listee_file.isEmpty()) {new_listee = &quot;&quot;} else {new_listee = new_listee_file.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_listee&quot;, new_listee);
+
+String y4 = new Integer (X+4).toString();	
+String z4 = x+y4;
+String value_taxo_emp_name = vars.get(z4);
+ArrayList&lt;String&gt; val2_taxo_emp_name = Arrays.asList(value_taxo_emp_name.split(&quot;\t&quot;));
+
+new_emp_name = val2_taxo_emp_name[1];
+if(new_emp_name == null || new_emp_name.isEmpty()) {new_employee_name = &quot;&quot;} else {new_employee_name = new_emp_name.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_employee_name&quot;, new_employee_name);
+
+String y5 = new Integer (X+5).toString();	
+String z5 = x+y5;
+String value_taxo_emp_no = vars.get(z5);
+ArrayList&lt;String&gt; val2_taxo_emp_no = Arrays.asList(value_taxo_emp_no.split(&quot;\t&quot;));
+
+new_emp_no = val2_taxo_emp_no[1];
+if(new_emp_no == null || new_emp_no.isEmpty()) {new_employee_number = &quot;&quot;} else {new_employee_number = new_emp_no.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_employee_number&quot;, new_employee_number);
+
+String y6 = new Integer (X+6).toString();	
+String z6 = x+y6;
+String value_taxo_project_no = vars.get(z6);
+ArrayList&lt;String&gt; val2_taxo_project_no = Arrays.asList(value_taxo_project_no.split(&quot;\t&quot;));
+
+new_project_no = val2_taxo_project_no[1];
+if(new_project_no == null || new_project_no.isEmpty()) {new_project_number = &quot;&quot;} else {new_project_number = new_project_no.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_project_number&quot;, new_project_number);</stringProp>
         </JSR223Sampler>
         <hashTree/>
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Certificate_ID list with header" enabled="true">
@@ -8246,8 +8334,9 @@ while (i == ${cert_loop_count})
 }
 result.append(&quot;],&quot;);
 result.append(&apos;\n&apos;);	
-result.append(&quot;\&quot;user\&quot; : \&quot;Global\\\\\\\50696\&quot;&quot;);
-//result.append(&quot;\&quot;user\&quot; : \&quot;${__escapeOroRegexpChars(${T1_Certificate_User})}\&quot;&quot;);
+user_value = &apos;${T1_new_employee_number}&apos;;
+if(user_value == null || user_value.isEmpty()) {user_val = &quot;&quot;} else {user_val = user_value.replace(&quot;\&quot;&quot;, &quot;&quot;).replace(&quot;\\\\&quot;, &quot;\\\\\\\\&quot;).trim()};
+result.append(&quot;\&quot;user\&quot; : \&quot;GLOBAL\\\\\\\&quot;+user_val+&quot;\&quot;&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;}&quot;);
 result.append(&apos;\n&apos;);
@@ -8569,7 +8658,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="09.Generate Cert-Decision with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="09.Generate Cert-Decision with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -8868,7 +8957,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="10.Add Decisions to Certificate" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="10.Add Decisions to Certificate" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -8954,43 +9043,52 @@ vars.put(&quot;T1_new_owner&quot;, new_owner);
 
 String y1 = new Integer (X+1).toString();	
 String z1 = x+y1;
-String value_taxo_applicant = vars.get(z1);
+String value_taxo_owner_acc = vars.get(z1);
+ArrayList&lt;String&gt; val2_taxo_owner_acc = Arrays.asList(value_taxo_owner_acc.split(&quot;\t&quot;));
+
+new_owner_acc = val2_taxo_owner_acc[1];
+if(new_owner_acc == null || new_owner_acc.isEmpty()) {new_owner_account = &quot;&quot;} else {new_owner_account = new_owner_acc.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
+vars.put(&quot;T1_new_owner_account&quot;, new_owner_account);
+
+String y2 = new Integer (X+2).toString();	
+String z2 = x+y2;
+String value_taxo_applicant = vars.get(z2);
 ArrayList&lt;String&gt; val2_taxo_applicant = Arrays.asList(value_taxo_applicant.split(&quot;\t&quot;));
 
 new_applicant_file = val2_taxo_applicant[1];
 if(new_applicant_file == null || new_applicant_file.isEmpty()) {new_applicant = &quot;&quot;} else {new_applicant = new_applicant_file.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_new_applicant&quot;, new_applicant);
 
-String y2 = new Integer (X+2).toString();	
-String z2 = x+y2;
-String value_taxo_listee = vars.get(z2);
+String y3 = new Integer (X+3).toString();	
+String z3 = x+y3;
+String value_taxo_listee = vars.get(z3);
 ArrayList&lt;String&gt; val2_taxo_listee = Arrays.asList(value_taxo_listee.split(&quot;\t&quot;));
 
 new_listee_file = val2_taxo_listee[1];
 if(new_listee_file == null || new_listee_file.isEmpty()) {new_listee = &quot;&quot;} else {new_listee = new_listee_file.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_new_listee&quot;, new_listee);
 
-String y3 = new Integer (X+3).toString();	
-String z3 = x+y3;
-String value_taxo_emp_name = vars.get(z3);
+String y4 = new Integer (X+4).toString();	
+String z4 = x+y4;
+String value_taxo_emp_name = vars.get(z4);
 ArrayList&lt;String&gt; val2_taxo_emp_name = Arrays.asList(value_taxo_emp_name.split(&quot;\t&quot;));
 
 new_emp_name = val2_taxo_emp_name[1];
 if(new_emp_name == null || new_emp_name.isEmpty()) {new_employee_name = &quot;&quot;} else {new_employee_name = new_emp_name.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_new_employee_name&quot;, new_employee_name);
 
-String y4 = new Integer (X+4).toString();	
-String z4 = x+y4;
-String value_taxo_emp_no = vars.get(z4);
+String y5 = new Integer (X+5).toString();	
+String z5 = x+y5;
+String value_taxo_emp_no = vars.get(z5);
 ArrayList&lt;String&gt; val2_taxo_emp_no = Arrays.asList(value_taxo_emp_no.split(&quot;\t&quot;));
 
 new_emp_no = val2_taxo_emp_no[1];
 if(new_emp_no == null || new_emp_no.isEmpty()) {new_employee_number = &quot;&quot;} else {new_employee_number = new_emp_no.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_new_employee_number&quot;, new_employee_number);
 
-String y5 = new Integer (X+5).toString();	
-String z5 = x+y5;
-String value_taxo_project_no = vars.get(z5);
+String y6 = new Integer (X+6).toString();	
+String z6 = x+y6;
+String value_taxo_project_no = vars.get(z6);
 ArrayList&lt;String&gt; val2_taxo_project_no = Arrays.asList(value_taxo_project_no.split(&quot;\t&quot;));
 
 new_project_no = val2_taxo_project_no[1];
@@ -9175,7 +9273,9 @@ catch (ParseException parseex)
 		}
 //result.append(&quot;\&quot;withdrawalDate\&quot; : \&quot;${Withdrawal_Date}\&quot;,&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;user\&quot; : \&quot;${T1_new_employee_number}\&quot;,&quot;);
+user_value = &apos;${T1_new_employee_number}&apos;;
+if(user_value == null || user_value.isEmpty()) {user_val = &quot;&quot;} else {user_val = user_value.replace(&quot;\&quot;&quot;, &quot;&quot;).replace(&quot;\\\\&quot;, &quot;\\\\\\\\&quot;).trim()};
+result.append(&quot;\&quot;user\&quot; : \&quot;GLOBAL\\\\\\\&quot;+user_val+&quot;\&quot;,&quot;);
 result.append(&apos;\n&apos;);
 ///////////////projectDetails block starts////////////////////////////////////////////////////
 result.append(&quot;\&quot;projectDetails\&quot; : [&quot;);
