@@ -1697,9 +1697,7 @@ import java.util.*;
 import java.io.*; 
 import org.apache.jmeter.services.FileServer;
 
-FileReader fr=new FileReader(&quot;${inputfile}&quot;);    
-BufferedReader br = new BufferedReader(fr);
-//BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -1709,8 +1707,7 @@ while ((line = br.readLine()) != null) {
 }
 
 vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-19));
-br.close();
-fr.close();    </stringProp>
+br.close();  </stringProp>
         </JSR223Sampler>
         <hashTree/>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="false">
