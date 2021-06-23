@@ -2525,12 +2525,13 @@ for(int asset=0 ; asset &lt; Associated_Transaction_count; asset++){ // iterate 
 		String[] params = Arrays.asList(product_type, owner, ref_no, model_no, family, creation_date, cert_type, cert_body, cert_mark, cert_no, rev_no, cert_owner);
 		String[] new_params = Arrays.asList(product_type, owner, ref_no, model_no, family, creation_date, asset_Id, ul_asset_Id);
 				
-		FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+&quot;01a_list_of_assets.tsv&quot;, true);
+		FileWriter fileWriter = new FileWriter(&quot;/home/jenkins/workspace/Auth-Copy-Upload-Job-02/02_Authorize_Copy_Tool/01a_list_of_assets.tsv&quot;, true);
+//		FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+&quot;01a_list_of_assets.tsv&quot;, true);
 		writeLine(fileWriter, params, SEPARATOR);
 		FileWriter fileWriter_new = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+&quot;01b_list_of_duplicate_assets.tsv&quot;, true);
 		writeLine(fileWriter_new, new_params, SEPARATOR);
 		
-
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 		//proper close to file
 		fileWriter.flush();
 		fileWriter.close();
