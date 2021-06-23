@@ -6040,7 +6040,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="07.Generate Cert-Party-Link with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="07.Generate Cert-Party-Link with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -6302,7 +6302,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="08.Parties Linking in Bulk" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="08.Parties Linking in Bulk" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -6347,7 +6347,8 @@ br.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
+
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -6546,11 +6547,11 @@ vars.put(&quot;Party_Relationship_Type_&quot; + t,  val2_cert_taxo[9]);
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/certificates/addParties</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/certificates/addParties</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6562,6 +6563,15 @@ vars.put(&quot;Party_Relationship_Type_&quot; + t,  val2_cert_taxo[9]);
             <stringProp name="TestPlan.comments">qa.informationplatform.ul.com</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(Access_Token)}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_add_bulk_parties" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
@@ -6717,11 +6727,11 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/certificates/addParties</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/certificates/addParties</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6733,6 +6743,15 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
             <stringProp name="TestPlan.comments">qa.informationplatform.ul.com</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(Access_Token)}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_add_bulk_parties" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
@@ -6998,7 +7017,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="09.Generate Cert-Decision with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="09.Generate Cert-Decision with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7297,7 +7316,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="10.Add Decisions to Certificate" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="10.Add Decisions to Certificate" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7360,7 +7379,8 @@ br.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
+
 String line;
 int counter = 0;
 while ((line = br.readLine()) != null) {
@@ -7548,11 +7568,11 @@ vars.put(&quot;T1_Certificate_ID&quot;,  val2_cert_taxo[13]);</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/assets/certificate/${T1_Certificate_ID}/decisions?skipValidation=false</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/assets/certificate/${T1_Certificate_ID}/decisions?skipValidation=false</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7563,6 +7583,15 @@ vars.put(&quot;T1_Certificate_ID&quot;,  val2_cert_taxo[13]);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(Access_Token)}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_model_creation" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
