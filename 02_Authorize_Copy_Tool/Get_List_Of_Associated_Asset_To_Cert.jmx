@@ -124,7 +124,7 @@
           </elementProp>
           <elementProp name="inputfile" elementType="Argument">
             <stringProp name="Argument.name">inputfile</stringProp>
-            <stringProp name="Argument.value">${__P(inputfile,)}</stringProp>
+            <stringProp name="Argument.value">20210622_50696P_50696_AuthCopyInput.tsv</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
