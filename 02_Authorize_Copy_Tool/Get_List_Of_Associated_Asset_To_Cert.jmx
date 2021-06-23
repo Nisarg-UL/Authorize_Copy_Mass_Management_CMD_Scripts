@@ -3092,6 +3092,7 @@ fileWriter.close();</stringProp>
     &quot;scope&quot;: &quot;&quot;,&#xd;
     &quot;items&quot;: [&#xd;
         {&#xd;
+            &quot;assessmentId&quot;: &quot;&quot;,&#xd;
             &quot;hierarchyId&quot;: &quot;ge28b891-a43e-4f59-9f15-2554f93359fe&quot;,&#xd;
             &quot;hierarchy&quot;: [],&#xd;
             &quot;remarks&quot;: {&#xd;
