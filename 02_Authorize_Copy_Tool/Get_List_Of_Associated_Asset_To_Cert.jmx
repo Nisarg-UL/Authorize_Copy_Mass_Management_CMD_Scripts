@@ -27,6 +27,11 @@
             <stringProp name="Argument.value">QA</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="Environment_Path" elementType="Argument">
+            <stringProp name="Argument.name">Environment_Path</stringProp>
+            <stringProp name="Argument.value">InformationPlatformServices</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="grant_type" elementType="Argument">
             <stringProp name="Argument.name">grant_type</stringProp>
             <stringProp name="Argument.value">client_credentials</stringProp>
@@ -140,7 +145,7 @@
         <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-        <stringProp name="HTTPSampler.path">InformationPlatformServices${environment}</stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
         <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
         <stringProp name="HTTPSampler.connect_timeout"></stringProp>
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
@@ -2239,7 +2244,7 @@ props.put(&quot;Access_Token&quot;, token);
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol"></stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/assets/certificateDetails?certificateId=${T1_Certificate_ID}&amp;mode=view&amp;user=50696</stringProp>
+              <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/assets/certificateDetails?certificateId=${T1_Certificate_ID}&amp;mode=view&amp;user=50696</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2528,8 +2533,7 @@ for(int asset=0 ; asset &lt; Associated_Transaction_count; asset++){ // iterate 
 		String[] params = Arrays.asList(product_type, owner, ref_no, model_no, family, creation_date, cert_type, cert_body, cert_mark, cert_no, rev_no, cert_owner);
 		String[] new_params = Arrays.asList(product_type, owner, ref_no, model_no, family, creation_date, asset_Id, ul_asset_Id);
 				
-		FileWriter fileWriter = new FileWriter(&quot;/home/jenkins/workspace/Auth-Copy-Upload-Job-02/02_Authorize_Copy_Tool/01a_list_of_assets.tsv&quot;, true);
-//		FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+&quot;01a_list_of_assets.tsv&quot;, true);
+		FileWriter fileWriter = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+&quot;01a_list_of_assets.tsv&quot;, true);
 		writeLine(fileWriter, params, SEPARATOR);
 		FileWriter fileWriter_new = new FileWriter(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+File.separator+File.separator+&quot;01b_list_of_duplicate_assets.tsv&quot;, true);
 		writeLine(fileWriter_new, new_params, SEPARATOR);
