@@ -1266,7 +1266,7 @@ try {
 		counter++;
 	}
 	
-	vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-19));
+	vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-20));
 	//log.info(&quot;Cert_loop_count:&quot;, Integer.toString(counter-19));
 	br.close();  	
 } 
