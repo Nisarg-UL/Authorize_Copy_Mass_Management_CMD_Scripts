@@ -2147,6 +2147,7 @@ ArrayList&lt;String&gt; val2_taxo_project_no = Arrays.asList(value_taxo_project_
 new_project_no = val2_taxo_project_no[1];
 if(new_project_no == null || new_project_no.isEmpty()) {new_project_number = &quot;&quot;} else {new_project_number = new_project_no.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_new_project_number&quot;, new_project_number);
+log.info(new_project_number);
 </stringProp>
           </JSR223Sampler>
           <hashTree/>
