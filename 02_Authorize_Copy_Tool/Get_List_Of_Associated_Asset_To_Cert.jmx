@@ -3142,7 +3142,7 @@ fileWriter.close();</stringProp>
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Complete Evaluation" enabled="false">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Complete Evaluation" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -3162,11 +3162,11 @@ fileWriter.close();</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${Environment_Path}/api/${version}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3176,8 +3176,18 @@ fileWriter.close();</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Complete Collection" enabled="false">
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(Access_Token)}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Complete Collection" enabled="true">
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -3193,11 +3203,11 @@ fileWriter.close();</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${Environment_Path}/api/${version}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3208,6 +3218,15 @@ fileWriter.close();</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(Access_Token)}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Message JSON Extractor" enabled="true">
               <stringProp name="JSONPostProcessor.referenceNames">T1_Asset_Message</stringProp>
               <stringProp name="JSONPostProcessor.jsonPathExprs">$.message</stringProp>
@@ -3323,7 +3342,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05a.Generate Asset-cert-Link with Old cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05a.Generate Asset-cert-Link with Old cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -3419,35 +3438,7 @@ fileWriter.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-////Start with the first line of data and get product taxonomy 
-//int S = ${__jm__Loop Controller__idx}+20;
-//String s = &quot;Line_data&quot;;
-//String t = new Integer (S).toString();	
-//String u = s+t;
-//String value_taxo = vars.get(u);
-////log.info(value_taxo);
-//ArrayList&lt;String&gt; val2_taxo = Arrays.asList(value_taxo.split(&quot;\t&quot;));
-//
-////log.info(val2_taxo);
-//
-//certificate_id = val2_taxo[0];
-//if(certificate_id == null || certificate_id.isEmpty()) {cert_id = &quot;&quot;} else {cert_id = certificate_id.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_ID&quot;, cert_id);
-//
-//certificate_number = val2_taxo[2];
-//if(certificate_number == null || certificate_number.isEmpty()) {cert_no = &quot;&quot;} else {cert_no = certificate_number.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;certificate_number&quot;, cert_no);
-//
-//certificate_status = val2_taxo[5];
-//if(certificate_status == null || certificate_status.isEmpty()) {cert_status = &quot;&quot;} else {cert_status = certificate_status.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_Status&quot;, cert_status);
-//
-//new_iss_date = val2_taxo[-1];
-//if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot;} else {new_issue_date = new_iss_date.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
-
-
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 
 String line;
 int counter = 0;
@@ -3675,7 +3666,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05b.Generate Asset-cert-Link with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="05b.Generate Asset-cert-Link with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -3947,7 +3938,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06a.Asset_Id Thread Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06a.Asset_Id Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -3969,35 +3960,7 @@ fileWriter.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-////Start with the first line of data and get product taxonomy 
-//int S = ${__jm__Loop Controller__idx}+20;
-//String s = &quot;Line_data&quot;;
-//String t = new Integer (S).toString();	
-//String u = s+t;
-//String value_taxo = vars.get(u);
-////log.info(value_taxo);
-//ArrayList&lt;String&gt; val2_taxo = Arrays.asList(value_taxo.split(&quot;\t&quot;));
-//
-////log.info(val2_taxo);
-//
-//certificate_id = val2_taxo[0];
-//if(certificate_id == null || certificate_id.isEmpty()) {cert_id = &quot;&quot;} else {cert_id = certificate_id.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_ID&quot;, cert_id);
-//
-//certificate_number = val2_taxo[2];
-//if(certificate_number == null || certificate_number.isEmpty()) {cert_no = &quot;&quot;} else {cert_no = certificate_number.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;certificate_number&quot;, cert_no);
-//
-//certificate_status = val2_taxo[5];
-//if(certificate_status == null || certificate_status.isEmpty()) {cert_status = &quot;&quot;} else {cert_status = certificate_status.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_Status&quot;, cert_status);
-//
-//new_iss_date = val2_taxo[-1];
-//if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot;} else {new_issue_date = new_iss_date.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
-
-
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 
 String line;
 int counter = 0;
@@ -4689,7 +4652,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06b.Certificate_Id Thread Group" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06b.Certificate_Id Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -4711,35 +4674,7 @@ fileWriter.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-////Start with the first line of data and get product taxonomy 
-//int S = ${__jm__Loop Controller__idx}+20;
-//String s = &quot;Line_data&quot;;
-//String t = new Integer (S).toString();	
-//String u = s+t;
-//String value_taxo = vars.get(u);
-////log.info(value_taxo);
-//ArrayList&lt;String&gt; val2_taxo = Arrays.asList(value_taxo.split(&quot;\t&quot;));
-//
-////log.info(val2_taxo);
-//
-//certificate_id = val2_taxo[0];
-//if(certificate_id == null || certificate_id.isEmpty()) {cert_id = &quot;&quot;} else {cert_id = certificate_id.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_ID&quot;, cert_id);
-//
-//certificate_number = val2_taxo[2];
-//if(certificate_number == null || certificate_number.isEmpty()) {cert_no = &quot;&quot;} else {cert_no = certificate_number.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;certificate_number&quot;, cert_no);
-//
-//certificate_status = val2_taxo[5];
-//if(certificate_status == null || certificate_status.isEmpty()) {cert_status = &quot;&quot;} else {cert_status = certificate_status.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_Status&quot;, cert_status);
-//
-//new_iss_date = val2_taxo[-1];
-//if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot;} else {new_issue_date = new_iss_date.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
-
-
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 
 String line;
 int counter = 0;
@@ -5373,7 +5308,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06c.Asset &amp; Certificate consolidation" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06c.Asset &amp; Certificate consolidation" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -5665,7 +5600,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06d.Link Asset To Certificate" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="06d.Link Asset To Certificate" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -5784,35 +5719,7 @@ fileWriter.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-////Start with the first line of data and get product taxonomy 
-//int S = ${__jm__Loop Controller__idx}+20;
-//String s = &quot;Line_data&quot;;
-//String t = new Integer (S).toString();	
-//String u = s+t;
-//String value_taxo = vars.get(u);
-////log.info(value_taxo);
-//ArrayList&lt;String&gt; val2_taxo = Arrays.asList(value_taxo.split(&quot;\t&quot;));
-//
-////log.info(val2_taxo);
-//
-//certificate_id = val2_taxo[0];
-//if(certificate_id == null || certificate_id.isEmpty()) {cert_id = &quot;&quot;} else {cert_id = certificate_id.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_ID&quot;, cert_id);
-//
-//certificate_number = val2_taxo[2];
-//if(certificate_number == null || certificate_number.isEmpty()) {cert_no = &quot;&quot;} else {cert_no = certificate_number.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;certificate_number&quot;, cert_no);
-//
-//certificate_status = val2_taxo[5];
-//if(certificate_status == null || certificate_status.isEmpty()) {cert_status = &quot;&quot;} else {cert_status = certificate_status.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_Certificate_Status&quot;, cert_status);
-//
-//new_iss_date = val2_taxo[-1];
-//if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot;} else {new_issue_date = new_iss_date.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
-//vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
-
-
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 
 String line;
 int counter = 0;
@@ -5940,11 +5847,11 @@ vars.put(&quot;certificate_id&quot;, cert_id);</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/certificate/${certificate_id}/assets</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/certificate/${certificate_id}/assets</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5955,6 +5862,15 @@ vars.put(&quot;certificate_id&quot;, cert_id);</stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer ${__property(Access_Token)}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_Taxo_Extract" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
