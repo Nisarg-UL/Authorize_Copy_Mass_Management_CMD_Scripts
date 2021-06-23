@@ -2028,7 +2028,7 @@ fileWriter.close();</stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="false">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="TestPlan.comments">${Cert_loop_count}</stringProp>
           <stringProp name="LoopController.loops">${Cert_loop_count}</stringProp>
