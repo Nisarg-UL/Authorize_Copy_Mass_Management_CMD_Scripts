@@ -1280,25 +1280,6 @@ catch (FileNotFoundException e) {
 </stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="false">
-          <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
-
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
-String line;
-int counter = 0;
-while ((line = br.readLine()) != null) {
-	vars.put(&quot;Line_&quot; + counter, (java.util.Arrays.toString(line.split(&quot;\t&quot;))));
-	vars.put(&quot;Line_data&quot; + counter, (line));
-	counter++;
-}
-
-vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-20));
-br.close();</stringProp>
-          <stringProp name="BeanShellSampler.filename"></stringProp>
-          <stringProp name="BeanShellSampler.parameters"></stringProp>
-          <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
-        </BeanShellSampler>
-        <hashTree/>
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Certificate_ID list with header" enabled="true">
           <stringProp name="cacheKey">false</stringProp>
           <stringProp name="filename"></stringProp>
@@ -2097,7 +2078,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="04.autorize copy - asset" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="04.autorize copy - asset" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -2430,91 +2411,6 @@ vars.put(&quot;creation_date&quot;, creation_date);
 ass_id = val2_taxo[6];
 asset_id = ass_id.replaceAll(&apos;^\&quot;+|\&quot;+$&apos;, &quot;&quot;).trim();
 vars.put(&quot;asset_Id&quot;, asset_id);
-
-//mod_nm = val2_taxo[6]
-//model_nm = mod_nm.replaceAll(&apos;^\&quot;+|\&quot;+$&apos;, &quot;&quot;).trim();
-//vars.put(&quot;model_nm&quot;, mod_nm);
-//
-//SimpleDateFormat csv_repo_date =new SimpleDateFormat(&quot;MM/dd/yyyy&quot;, Locale.ENGLISH);
-//try {
-//	Date repo_parsedDate = csv_repo_date.parse(val2_taxo[7]);
-//	SimpleDateFormat repo_json_date = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-//	repo_date = repo_json_date.format(repo_parsedDate)
-//	report_date = repo_date;
-//}
-//catch (ParseException Unparseableex) 
-//	{
-//		report_date = &quot;&quot;;
-//	}
-//vars.put(&quot;report_date&quot;, report_date); 
-//
-//only_ul = val2_taxo[8];
-////if(only_ul == null || only_ul.isEmpty()) {ul = &quot;&quot;} else {ul = only_ul};
-//vars.put(&quot;ul&quot;, only_ul);
-//
-//only_cul = val2_taxo[9];
-////if(only_cul == null || only_cul.isEmpty()) {cul = &quot;&quot;} else {cul = only_cul};
-//vars.put(&quot;cul&quot;, only_cul);
-//
-//new_ass_owner = val2_taxo[10];
-//if(new_ass_owner == null) {new_asset_owner = &quot;&quot;} else {new_asset_owner = new_ass_owner};
-//vars.put(&quot;new_owner_ref&quot;, new_asset_owner);
-//
-//new_ref_no = val2_taxo[11];
-//if(new_ref_no == null) {new_ref = &quot;&quot;} else {new_ref = new_ref_no};
-//vars.put(&quot;new_ref_no&quot;, new_ref);
-//
-//new_family_series = val2_taxo[12];
-//if(new_family_series == null || new_family_series.isEmpty() ) {new_series = &quot;&quot;} else {new_series = new_family_series};
-//vars.put(&quot;new_series&quot;, new_series);
-//
-//new_model_no = val2_taxo[13];
-//if(new_model_no == null) {new_model = &quot;&quot;} else {new_model = new_model_no};
-//vars.put(&quot;new_model_no&quot;, new_model);
-//
-//new_create_date = val2_taxo[14];
-//if(new_create_date== null || new_create_date.isEmpty()) {rev_create_date= creation_date} else {
-//	SimpleDateFormat csv_new_taxo_date =new SimpleDateFormat(&quot;MM/dd/yyyy&quot;, Locale.ENGLISH);
-//	try {
-//		Date new_taxo_parsedDate = csv_new_taxo_date.parse(val2_taxo[14]);
-//		SimpleDateFormat new_taxo_json_date = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-//		new_created_date = new_taxo_json_date.format(new_taxo_parsedDate)
-//		rev_create_date = new_created_date;
-//	}
-//	catch (ParseException Unparseableex) 
-//		{
-//			rev_create_date = &quot;&quot;;
-//		}
-//}
-//vars.put(&quot;new_creation_date&quot;, rev_create_date);
-//
-//new_mod_nm = val2_taxo[15]
-////if(new_mod_nm.isEmpty()) {new_model_nm = &quot;&quot;} else {new_model_nm = new_mod_nm};
-//vars.put(&quot;new_model_nm&quot;, new_mod_nm);
-//
-//new_repo_date = val2_taxo[16];
-//if(new_repo_date == null || new_repo_date.isEmpty()) {rev_rep_date = &quot;&quot;} else if (new_repo_date == &quot;NONE&quot; || new_repo_date == &quot;None&quot;) {rev_rep_date = &quot;NONE&quot;} else {
-//	SimpleDateFormat csv_report_date =new SimpleDateFormat(&quot;MM/dd/yyyy&quot;, Locale.ENGLISH);
-//	try {
-//		Date report_parsedDate = csv_report_date.parse(val2_taxo[16]);
-//		SimpleDateFormat report_json_date = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
-//		rev_report_date = report_json_date.format(report_parsedDate);
-//		rev_rep_date = rev_report_date;
-//	}
-//	catch (ParseException Unparseableex) 
-//		{
-//			rev_rep_date = &quot;&quot;;
-//		}
-//}
-//vars.put(&quot;new_report_date&quot;, rev_rep_date);
-//
-//new_only_ul = val2_taxo[17];
-////if(new_only_ul.isEmpty()) {new_ul = &quot;&quot;} else {new_ul = new_only_ul};
-//vars.put(&quot;new_ul&quot;, new_only_ul);
-//
-//new_only_cul = val2_taxo[18];
-////if(new_only_cul.isEmpty()) {new_cul = &quot;&quot;} else {new_cul = new_only_cul};
-//vars.put(&quot;new_cul&quot;, new_only_cul);
 </stringProp>
           </JSR223Sampler>
           <hashTree/>
@@ -3214,11 +3110,11 @@ fileWriter.close();</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/assets/${T1_New_Asset_ID}/standards</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/assets/${T1_New_Asset_ID}/standards</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3256,11 +3152,11 @@ fileWriter.close();</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -3287,11 +3183,11 @@ fileWriter.close();</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">${Environment_IP}</stringProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">InformationPlatformServices/api/${version}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}${environment}/collections/${T1_New_Collection_ID}/standards/evaluations</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
