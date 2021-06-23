@@ -1420,8 +1420,7 @@ new_iss_date = val2_taxo[-1];
 if(new_iss_date == null || new_iss_date.isEmpty()) {new_issue_date = &quot;&quot;} else {new_issue_date = new_iss_date.replace(&quot;\&quot;&quot;, &quot;&quot;).trim()};
 vars.put(&quot;T1_New_Issue_Date&quot;, new_issue_date);
 
-
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 
 String line;
 int counter = 0;
@@ -2218,7 +2217,7 @@ br.close();</stringProp>
 import java.util.*;
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(FileServer.getFileServer().getBaseDir() + File.separator+File.separator+&quot;${inputfile}&quot;));
+BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
 
 String line;
 int counter = 0;
