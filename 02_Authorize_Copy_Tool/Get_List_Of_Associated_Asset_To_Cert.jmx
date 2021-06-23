@@ -2195,7 +2195,7 @@ log.info(new_project_number);
               <stringProp name="HTTPSampler.port"></stringProp>
               <stringProp name="HTTPSampler.protocol">https</stringProp>
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/ul.onmicrosoft.com/oauth2/token</stringProp>
+              <stringProp name="HTTPSampler.path">//ul.onmicrosoft.com//oauth2//token</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
               <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
