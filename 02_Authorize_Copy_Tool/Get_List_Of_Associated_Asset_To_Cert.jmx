@@ -2223,6 +2223,7 @@ import java.util.*;
 
 String s = &quot;access_token&quot;;
 String token = vars.get(s);
+log.info(token);
 
 // Trying to set property variable (Global Variable)
 props.put(&quot;Access_Token&quot;, token);
