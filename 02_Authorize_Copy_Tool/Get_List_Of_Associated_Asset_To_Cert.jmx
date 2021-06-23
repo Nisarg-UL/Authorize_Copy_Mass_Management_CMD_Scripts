@@ -1708,7 +1708,7 @@ try {
 	}
 	
 	vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-19));
-	log.info(&quot;Cert_loop_count:&quot;, ${Cert_loop_count});
+	log.info(&quot;Cert_loop_count:&quot;, Integer.toString(counter-19));
 	br.close();  	
 } 
 catch (FileNotFoundException e) {
