@@ -1697,17 +1697,27 @@ import java.util.*;
 import java.io.*; 
 import org.apache.jmeter.services.FileServer;
 
-BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
-String line;
-int counter = 0;
-while ((line = br.readLine()) != null) {
-	vars.put(&quot;Line_&quot; + counter, (java.util.Arrays.toString(line.split(&quot;\t&quot;))));
-	vars.put(&quot;Line_data&quot; + counter, (line));
-	counter++;
+try {
+	BufferedReader br = new BufferedReader(new FileReader(new File(&quot;${inputfile}&quot;)));
+	String line;
+	int counter = 0;
+	while ((line = br.readLine()) != null) {
+		vars.put(&quot;Line_&quot; + counter, (java.util.Arrays.toString(line.split(&quot;\t&quot;))));
+		vars.put(&quot;Line_data&quot; + counter, (line));
+		counter++;
+	}
+	
+	vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-19));
+	br.close();  	
+} 
+catch (FileNotFoundException e) {
+		System.out.println(&quot;File not exists or insufficient rights&quot;);
+		e.printStackTrace();
+} catch (IOException e) {
+		System.out.println(&quot;An exception occured while reading the file&quot;);
+		e.printStackTrace();
 }
-
-vars.put(&quot;Cert_loop_count&quot;,Integer.toString(counter-19));
-br.close();  </stringProp>
+</stringProp>
         </JSR223Sampler>
         <hashTree/>
         <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BS Sampler_Cert_List" enabled="false">
