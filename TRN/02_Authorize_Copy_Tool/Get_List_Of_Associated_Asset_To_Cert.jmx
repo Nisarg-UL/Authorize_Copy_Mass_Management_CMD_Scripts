@@ -42,16 +42,6 @@
             <stringProp name="Argument.value">User.Read</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="client_id_DEV" elementType="Argument">
-            <stringProp name="Argument.name">client_id_DEV</stringProp>
-            <stringProp name="Argument.value">0bde28b5-3955-44fc-ba93-7bd24888cad4</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_secret_DEV" elementType="Argument">
-            <stringProp name="Argument.name">client_secret_DEV</stringProp>
-            <stringProp name="Argument.value">_1WsFrF-8Jq.7j.E50ampM~YF09-KXP6Om</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="client_id_TRN" elementType="Argument">
             <stringProp name="Argument.name">client_id_TRN</stringProp>
             <stringProp name="Argument.value">8f579cf2-e2c1-4dfc-9e67-604cae901065</stringProp>

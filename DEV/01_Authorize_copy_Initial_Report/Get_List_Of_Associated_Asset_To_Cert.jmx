@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Get_List_Of_Associated_Asset_To_Cert" enabled="true">
-      <stringProp name="TestPlan.comments">Please change Environment (DEV|QA|TRN|PROD) if you want to execute this test across other environment</stringProp>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Get_List_Of_Associated_Asset_To_Cert_DEV" enabled="true">
+      <stringProp name="TestPlan.comments">Please change Environment (DEV) if you want to execute this test</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
           <elementProp name="environment" elementType="Argument">
             <stringProp name="Argument.name">environment</stringProp>
-            <stringProp name="Argument.value">QA</stringProp>
+            <stringProp name="Argument.value">DEV</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="Environment_Path" elementType="Argument">
@@ -35,36 +35,6 @@
           <elementProp name="client_secret_DEV" elementType="Argument">
             <stringProp name="Argument.name">client_secret_DEV</stringProp>
             <stringProp name="Argument.value">_1WsFrF-8Jq.7j.E50ampM~YF09-KXP6Om</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_id_TRN" elementType="Argument">
-            <stringProp name="Argument.name">client_id_TRN</stringProp>
-            <stringProp name="Argument.value">cb7de529-ffbc-4574-ac0b-5025847ec5a2</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_secret_TRN" elementType="Argument">
-            <stringProp name="Argument.name">client_secret_TRN</stringProp>
-            <stringProp name="Argument.value">NB9Ah.6ZX8OiE3vq?=qgwwKV@7bpRBN@ </stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_id_QA" elementType="Argument">
-            <stringProp name="Argument.name">client_id_QA</stringProp>
-            <stringProp name="Argument.value">108b1166-1352-4636-8ccd-34ed0611dbc1</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_secret_QA" elementType="Argument">
-            <stringProp name="Argument.name">client_secret_QA</stringProp>
-            <stringProp name="Argument.value">oey3KPPqmN4O4vG_DE.mG.~S~-XmzM4SJi</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_id_PROD" elementType="Argument">
-            <stringProp name="Argument.name">client_id_PROD</stringProp>
-            <stringProp name="Argument.value">98da3396-91da-4bf4-8e6c-62ba7a32ba7a</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="client_secret_PROD" elementType="Argument">
-            <stringProp name="Argument.name">client_secret_PROD</stringProp>
-            <stringProp name="Argument.value">_s~06RK67yvVhc-QgqTfsR0Gwaf5vs~8.U</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="user_number" elementType="Argument">
@@ -141,73 +111,6 @@
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)" enabled="false">
-        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-          <collectionProp name="Arguments.arguments"/>
-        </elementProp>
-        <stringProp name="HTTPSampler.domain">io.ul.com/InformationPlatform${environment}</stringProp>
-        <stringProp name="HTTPSampler.port"></stringProp>
-        <stringProp name="HTTPSampler.protocol">https</stringProp>
-        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-        <stringProp name="HTTPSampler.path"></stringProp>
-        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-        <stringProp name="HTTPSampler.response_timeout"></stringProp>
-      </ConfigTestElement>
-      <hashTree/>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <longProp name="ThreadGroup.start_time">1526333078000</longProp>
-        <longProp name="ThreadGroup.end_time">1526333078000</longProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-      </SetupThreadGroup>
-      <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="00.Report_list_of_certificates" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">false</stringProp>
-          <stringProp name="script">import javax.*;
-import java.text.*;
-import java.util.*;
-import org.apache.jmeter.services.FileServer;
-
-cal_create_date = new Date().format(&apos;yyyyMMdd&apos;);
-
-String user_no = vars.get(&quot;user_number&quot;);
-
-String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;;
-
-try {
-
- File file = new File(customers);
-
- if (file.delete()) {
-  System.out.println(file.getName() + &quot; is deleted!&quot;);
- } else {
-  System.out.println(&quot;Delete operation has failed!&quot;);
- }
-} catch (Exception e) {
-  e.printStackTrace();
-}
-
-// Open File(s)
-f = new FileOutputStream(FileServer.getFileServer().getBaseDir()+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;, true); 
-p = new PrintStream(f); 
-
-// Close File(s)
-p.close();f.close();</stringProp>
-        </JSR223Sampler>
-        <hashTree/>
-      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="00.Get Cert Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -1263,7 +1166,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+      <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="false">
         <boolProp name="displayJMeterProperties">false</boolProp>
         <boolProp name="displayJMeterVariables">true</boolProp>
         <boolProp name="displaySamplerProperties">true</boolProp>
