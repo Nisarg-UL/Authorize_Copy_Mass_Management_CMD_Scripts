@@ -113,7 +113,7 @@
           </elementProp>
           <elementProp name="operator" elementType="Argument">
             <stringProp name="Argument.name">operator</stringProp>
-            <stringProp name="Argument.value">eq</stringProp>
+            <stringProp name="Argument.value">like</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="offset" elementType="Argument">
@@ -135,8 +135,8 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)" enabled="true">
-        <stringProp name="HTTPSampler.domain">io.ul.com/InformationPlatform</stringProp>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)">
+        <stringProp name="HTTPSampler.domain">io.ul.com</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments"/>
@@ -144,7 +144,7 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -388,7 +388,7 @@ vars.put(&quot;T1_offset&quot;, offset);</stringProp>
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -405,9 +405,9 @@ props.put(&quot;Access_Token&quot;, token);
 //${__setProperty(Access_Token, ${access_token})};</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert Count" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert Count">
           <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
-          <stringProp name="HTTPSampler.path">/certificates/summary</stringProp>
+          <stringProp name="HTTPSampler.path">${Environment_Path}/certificates/summary</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -423,7 +423,7 @@ props.put(&quot;Access_Token&quot;, token);
           </elementProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -639,7 +639,7 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
           </JSONPostProcessor>
           <hashTree/>
         </hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler_Successive loop" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="JSR223 Sampler_Successive loop">
           <stringProp name="TestPlan.comments">For count &gt; 400</stringProp>
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
@@ -648,9 +648,8 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
           <stringProp name="script">import java.text.*;
 import java.util.*;
 
-log.info(vars.get(&quot;T1_Cert_Total_Count&quot;));
 def pl_count = (vars.get(&quot;T1_Cert_Total_Count&quot;)).toInteger();
-log.info(pl_count.toString());
+//log.info(&quot;cert_count:&quot; + pl_count.toString());
 
 if(pl_count &gt; 400) 
 	{
@@ -669,7 +668,7 @@ else
 </stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <boolProp name="LoopController.continue_forever">true</boolProp>
           <stringProp name="LoopController.loops">${A}</stringProp>
         </LoopController>
@@ -1000,7 +999,7 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
               <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Unique cert and Store">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Unique cert and Store" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -1145,7 +1144,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
           </hashTree>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1223,7 +1222,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <boolProp name="displaySystemProperties">true</boolProp>
       </DebugPostProcessor>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
