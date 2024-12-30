@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.1">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Get_List_Of_Associated_Asset_To_Cert" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Get_List_Of_Associated_Asset_To_Cert">
       <stringProp name="TestPlan.comments">Please change Environment PROD if you want to execute this test</stringProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
-      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
           <elementProp name="environment" elementType="Argument">
             <stringProp name="Argument.name">environment</stringProp>
@@ -94,35 +93,26 @@
           </elementProp>
         </collectionProp>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)" enabled="true">
-        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)">
+        <stringProp name="HTTPSampler.domain">io.ul.com</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">io.ul.com</stringProp>
-        <stringProp name="HTTPSampler.port"></stringProp>
-        <stringProp name="HTTPSampler.protocol">https</stringProp>
-        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-        <stringProp name="HTTPSampler.path"></stringProp>
-        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
-        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="00.Get Cert Thread Group" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
       </ThreadGroup>
       <hashTree>
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cert_Asset_ID list with header" enabled="true">
@@ -261,7 +251,14 @@ vars.put(&quot;T1_offset&quot;, offset);</stringProp>
         </JSR223Sampler>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Getting an Access Token for IP" enabled="true">
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+          <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/ul.onmicrosoft.com/oauth2/token</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
             <collectionProp name="Arguments.arguments">
               <elementProp name="grant_type" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
@@ -293,19 +290,6 @@ vars.put(&quot;T1_offset&quot;, offset);</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/ul.onmicrosoft.com/oauth2/token</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Access_Token " enabled="true">
@@ -332,7 +316,12 @@ props.put(&quot;Access_Token&quot;, token);
 //${__setProperty(Access_Token, ${access_token})};</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert Count" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert Count">
+          <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
+          <stringProp name="HTTPSampler.path">/${Environment_Path}/certificates/summary</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -343,20 +332,6 @@ props.put(&quot;Access_Token&quot;, token);
               </elementProp>
             </collectionProp>
           </elementProp>
-          <stringProp name="HTTPSampler.domain"></stringProp>
-          <stringProp name="HTTPSampler.port"></stringProp>
-          <stringProp name="HTTPSampler.protocol"></stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/${Environment_Path}/certificates/summary</stringProp>
-          <stringProp name="HTTPSampler.method">POST</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
         </HTTPSamplerProxy>
         <hashTree>
           <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
@@ -368,7 +343,7 @@ props.put(&quot;Access_Token&quot;, token);
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_PL_body" enabled="true">
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_PL_body">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -639,7 +614,14 @@ else
           </ConstantTimer>
           <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Getting an Access Token for IP" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/ul.onmicrosoft.com/oauth2/token</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
               <collectionProp name="Arguments.arguments">
                 <elementProp name="grant_type" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
@@ -671,19 +653,6 @@ else
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain">login.microsoftonline.com</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/ul.onmicrosoft.com/oauth2/token</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
           <hashTree>
             <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Access_Token " enabled="true">
@@ -727,7 +696,12 @@ log.info(new_offset.toString());
 vars.put(&quot;new_offset&quot;, new_offset.toString());</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert ID" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert ID">
+            <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
+            <stringProp name="HTTPSampler.path">/${Environment_Path}/certificates/summary</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
             <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
               <collectionProp name="Arguments.arguments">
@@ -738,20 +712,6 @@ vars.put(&quot;new_offset&quot;, new_offset.toString());</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
-            <stringProp name="HTTPSampler.domain"></stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol"></stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/${Environment_Path}/certificates/summary</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
           </HTTPSamplerProxy>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
@@ -999,7 +959,7 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
               <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Unique cert and Store" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Unique cert and Store">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -1052,23 +1012,23 @@ public void writeLine(FileWriter writer, String[] params, char separator)
    stringBuilder.append(System.getProperty(&quot;line.separator&quot;));
 
    //add to file the line
-   log.info(stringBuilder.toString());
+   //log.info(stringBuilder.toString());
    writer.append(stringBuilder.toString());
 
 }
 
 JSONArray Number_of_PL = new JSONArray(vars.get(&quot;T1_List_of_Cert&quot;).toString()); 
 int PL_count = Number_of_PL.length(); // get totalCount of all jsonObjects &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;///// Start Here ///////&gt;&gt;&gt;&gt;&gt;&gt;
-//log.info(&quot;Certificate_count:&quot; + Certificate_count.toString());
+log.info(&quot;PL_count:&quot; + PL_count.toString());
 
 for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray 
 	JSONObject pl_Object = Number_of_PL.get(pl);
-//	log.info(&quot;cert_Object:&quot; + cert_Object.toString());
+	//log.info(&quot;pl_Object:&quot; + pl_Object.toString());
 
 	String cert_type = pl_Object.getString(&quot;certificateType&quot;); 
 	String cert_body = pl_Object.getString(&quot;issuingBody&quot;); 
 	String cert_mark = pl_Object.getString(&quot;mark&quot;); 
-	String cert_num = pl_Object.getString(&quot;certificateName&quot;);
+	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
 	try {
 		if(pl_Object.keys() != &quot;revisionNumber&quot;) {
 			cert_rev_num = &quot;&quot;; 					
@@ -1078,7 +1038,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	}
 	catch (ParseException e) {
 		e.printStackTrace();
-	}	 
+	}	
 	String cert_owner = pl_Object.getString(&quot;ownerReference&quot;); 
 	String cert_applicant_file = pl_Object.getString(&quot;fileNumber&quot;); 
 	String cert_ccn = pl_Object.getString(&quot;ccn&quot;);
@@ -1093,7 +1053,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	cert_issue_date_need_format = pl_Object.getString(&quot;issueDate&quot;);
 	log.info(&quot;cert_issue_date_need_format:&quot; +cert_issue_date_need_format.toString());
 	if (!cert_issue_date_need_format.isEmpty()){
-		//log.info(&quot;true&quot;);	
+		log.info(&quot;true&quot;);	
 		try{
 			cert_issue_date_format = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).parse(cert_issue_date_need_format);
 			//log.info(&quot;cert_issue_date_format:&quot; +cert_issue_date_format.toString());	
@@ -1106,7 +1066,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 					e.printStackTrace();
 				}
 	} else {
-		//log.info(&quot;false&quot;);
+		log.info(&quot;false&quot;);
 		cert_issue_date = &quot;&quot;;
 		log.info(&quot;cert_issue_date&quot; + cert_issue_date);
 	}
@@ -1126,14 +1086,14 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	//****
 	if (!(cert_num.startsWith(&quot;X-&quot;))){
 		if (cert_status != &quot;Obsolete&quot;){
-//			if (!(cert_rev_num == &apos;0&apos; &amp;&amp; cert_status == &quot;Under Revision&quot;)) {
 			if (!(cert_status == &quot;Under Revision&quot;)) {
-				if ((cert_type == &apos;US Safety Scheme&apos; || cert_type == &apos;Canada Safety Scheme&apos;)) {
+				if ((cert_type == &apos;US Safety Scheme&apos; || cert_type == &apos;Canada Safety Scheme&apos; || cert_type == &apos;ULC Mark Safety Scheme&apos;)) {
 					writeLine(fileWriter, params, SEPARATOR);				
-				}				
-			}
+				}
+			}					
 		}
 	}
+	
 	//proper close to file
 	fileWriter.flush();
 	fileWriter.close();
@@ -1181,7 +1141,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="false">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1215,7 +1175,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+      <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="false">
         <boolProp name="displayJMeterProperties">false</boolProp>
         <boolProp name="displayJMeterVariables">true</boolProp>
         <boolProp name="displaySamplerProperties">true</boolProp>
