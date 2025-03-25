@@ -123,6 +123,7 @@
           </elementProp>
         </collectionProp>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(non-PROD)" enabled="false">
@@ -999,7 +1000,7 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
               <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Unique cert and Store" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Unique cert and Store">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -1070,10 +1071,10 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_mark = pl_Object.getString(&quot;mark&quot;); 
 	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
 	try {
-		if(pl_Object.keys() != &quot;revisionNumber&quot;) {
-			cert_rev_num = &quot;&quot;; 					
+		if(pl_Object.keySet().contains(&quot;revisionNumber&quot;)) {
+			cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);				
 		} else {
-			String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;); 
+			cert_rev_num = &quot;&quot;; 
 		}
 	}
 	catch (ParseException e) {
@@ -1144,7 +1145,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
           </hashTree>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -1222,7 +1223,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
         <boolProp name="displaySystemProperties">true</boolProp>
       </DebugPostProcessor>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>

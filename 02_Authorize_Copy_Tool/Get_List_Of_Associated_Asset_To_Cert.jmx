@@ -9,7 +9,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="Ingestion_Template" elementType="Argument">
             <stringProp name="Argument.name">Ingestion_Template</stringProp>
-            <stringProp name="Argument.value">20220316_4790273687_80500_AuthCopyInput.tsv</stringProp>
+            <stringProp name="Argument.value">20220502_4790380301_80500_AuthCopyInput.tsv</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="environment" elementType="Argument">
@@ -160,7 +160,7 @@
         <stringProp name="HTTPSampler.response_timeout"></stringProp>
       </ConfigTestElement>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="01b.Get List Of Assets | Parties | Decisions" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="01b.Get List Of Assets | Parties | Decisions" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1128,7 +1128,7 @@ writer_decisions.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="02.Remove Duplicates to Create Unique Asset List" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="02.Remove Duplicates to Create Unique Asset List" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -4659,7 +4659,7 @@ result.append(&quot;},&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;collectionName\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;\&quot;,&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
 result.append(&apos;\n&apos;);
@@ -4667,15 +4667,15 @@ result.append(&quot;},&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;projectNumber\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;\&quot;,&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${T1_new_project_number}\&quot;&quot;);
+result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;},&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;quoteNumber\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;\&quot;,&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
 result.append(&apos;\n&apos;);
@@ -4683,7 +4683,7 @@ result.append(&quot;},&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;orderNumber\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;\&quot;,&quot;);
 result.append(&apos;\n&apos;);
 result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
 result.append(&apos;\n&apos;);
@@ -5342,69 +5342,65 @@ result.append(&apos;\n&apos;);
 //searchParameters blob starts here
 result.append(&quot;\&quot;searchParameters\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;ccn\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
-result.append(&apos;\n&apos;);
+var_cert_mark = vars.get(&quot;certificate_mark&quot;);
+if (var_cert_mark != &quot;&quot; &amp;&amp; var_cert_mark != null) {
+	result.append(&quot;\&quot;mark\&quot; : {&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_mark}\&quot;&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;},&quot;);
+	result.append(&apos;\n&apos;);
+}
+var_cert_body = vars.get(&quot;certificate_body&quot;);
+if (var_cert_body != &quot;&quot; &amp;&amp; var_cert_body != null) {
+	result.append(&quot;\&quot;issuingBody\&quot; : {&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_body}\&quot;&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;},&quot;);
+	result.append(&apos;\n&apos;);
+}
+var_owner_ref = vars.get(&quot;certificate_owner&quot;);
+if (var_owner_ref != &quot;&quot; &amp;&amp; var_owner_ref != null) {
+	result.append(&quot;\&quot;ownerReference\&quot; : {&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_owner}\&quot;&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;},&quot;);
+	result.append(&apos;\n&apos;);
+}
+var_cert_no = vars.get(&quot;certificate_name&quot;);
+if (var_cert_no != &quot;&quot; &amp;&amp; var_cert_no != null) {
+	result.append(&quot;\&quot;certificateName\&quot; : {&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+	result.append(&apos;\n&apos;);
+	if (var_cert_no.indexOf(&apos;\&apos;&apos;) &gt;= 0){
+		result.append(&apos;\&quot;value\&quot; : \&quot;${certificate_name}\&quot;&apos;);
+	} else {
+		result.append(&apos;\&quot;value\&quot; : \&apos;${certificate_name}\&apos;&apos;);
+	}
+}
 result.append(&quot;},&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;fileNumber\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;},&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;productType\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;},&quot;);
-result.append(&quot;\&quot;mark\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_mark}\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;},&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;issuingBody\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_body}\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;},&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;ownerReference\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_owner}\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;},&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;certificateName\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_name}\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;},&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;certificateType\&quot; : {&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_type}\&quot;&quot;);
-result.append(&apos;\n&apos;);
-result.append(&quot;}&quot;);
-result.append(&apos;\n&apos;);
+var_cert_type = vars.get(&quot;certificate_type&quot;);
+if (var_cert_type != &quot;&quot; &amp;&amp; var_cert_type != null) {
+	result.append(&quot;\&quot;certificateType\&quot; : {&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;\&quot;value\&quot; : \&quot;${certificate_type}\&quot;&quot;);
+	result.append(&apos;\n&apos;);
+	result.append(&quot;}&quot;);
+	result.append(&apos;\n&apos;);
+}
 result.append(&quot;},&quot;);
 //searchParameters blob ends here
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -6498,7 +6494,7 @@ fileWriter.close();</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="07.Generate Cert-Party-Link with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="07.Generate Cert-Party-Link with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -6789,7 +6785,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="08.Parties Linking in Bulk" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="08.Parties Linking in Bulk" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7609,7 +7605,7 @@ fileWriter.close();
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="09.Generate Cert-Decision with New cert" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="09.Generate Cert-Decision with New cert" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -7937,7 +7933,7 @@ fileWriter.close();</stringProp>
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="10.Add Decisions to Certificate" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="10.Add Decisions to Certificate" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
