@@ -1072,7 +1072,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
 	try {
 		if(pl_Object.keySet().contains(&quot;revisionNumber&quot;)) {
-			cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);				
+			cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);		
 		} else {
 			cert_rev_num = &quot;&quot;; 
 		}
