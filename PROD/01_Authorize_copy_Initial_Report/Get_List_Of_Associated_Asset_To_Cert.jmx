@@ -2,7 +2,7 @@
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Get_List_Of_Associated_Asset_To_Cert">
-      <stringProp name="TestPlan.comments">Please change Environment PROD if you want to execute this test</stringProp>
+      <stringProp name="TestPlan.comments">Please change Environment (DEV|QA|TRN|PROD) if you want to execute this test across other environment</stringProp>
       <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments">
@@ -24,6 +24,36 @@
           <elementProp name="scope" elementType="Argument">
             <stringProp name="Argument.name">scope</stringProp>
             <stringProp name="Argument.value">User.Read</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="client_id_DEV" elementType="Argument">
+            <stringProp name="Argument.name">client_id_DEV</stringProp>
+            <stringProp name="Argument.value">0bde28b5-3955-44fc-ba93-7bd24888cad4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="client_secret_DEV" elementType="Argument">
+            <stringProp name="Argument.name">client_secret_DEV</stringProp>
+            <stringProp name="Argument.value">_1WsFrF-8Jq.7j.E50ampM~YF09-KXP6Om</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="client_id_TRN" elementType="Argument">
+            <stringProp name="Argument.name">client_id_TRN</stringProp>
+            <stringProp name="Argument.value">cb7de529-ffbc-4574-ac0b-5025847ec5a2</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="client_secret_TRN" elementType="Argument">
+            <stringProp name="Argument.name">client_secret_TRN</stringProp>
+            <stringProp name="Argument.value">NB9Ah.6ZX8OiE3vq?=qgwwKV@7bpRBN@ </stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="client_id_QA" elementType="Argument">
+            <stringProp name="Argument.name">client_id_QA</stringProp>
+            <stringProp name="Argument.value">108b1166-1352-4636-8ccd-34ed0611dbc1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="client_secret_QA" elementType="Argument">
+            <stringProp name="Argument.name">client_secret_QA</stringProp>
+            <stringProp name="Argument.value">oey3KPPqmN4O4vG_DE.mG.~S~-XmzM4SJi</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="client_id_PROD" elementType="Argument">
@@ -83,7 +113,7 @@
           </elementProp>
           <elementProp name="operator" elementType="Argument">
             <stringProp name="Argument.name">operator</stringProp>
-            <stringProp name="Argument.value">eq</stringProp>
+            <stringProp name="Argument.value">like</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="offset" elementType="Argument">
@@ -93,9 +123,20 @@
           </elementProp>
         </collectionProp>
       </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)">
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(non-PROD)" enabled="false">
+        <stringProp name="HTTPSampler.domain">uliotest.azure-api.net</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.path">InformationPlatformServices${environment}</stringProp>
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+          <collectionProp name="Arguments.arguments"/>
+        </elementProp>
+        <stringProp name="HTTPSampler.implementation"></stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults-IP(PROD)" enabled="true">
         <stringProp name="HTTPSampler.domain">io.ul.com</stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
@@ -104,6 +145,55 @@
         <stringProp name="HTTPSampler.implementation"></stringProp>
       </ConfigTestElement>
       <hashTree/>
+      <SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="setUp Thread Group" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </SetupThreadGroup>
+      <hashTree>
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="00.Report_list_of_certificates" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="cacheKey">false</stringProp>
+          <stringProp name="script">import javax.*;
+import java.text.*;
+import java.util.*;
+import org.apache.jmeter.services.FileServer;
+
+cal_create_date = new Date().format(&apos;yyyyMMdd&apos;);
+
+String user_no = vars.get(&quot;user_number&quot;);
+
+String customers = FileServer.getFileServer().getBaseDir() + File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;;
+
+try {
+
+ File file = new File(customers);
+
+ if (file.delete()) {
+  System.out.println(file.getName() + &quot; is deleted!&quot;);
+ } else {
+  System.out.println(&quot;Delete operation has failed!&quot;);
+ }
+} catch (Exception e) {
+  e.printStackTrace();
+}
+
+// Open File(s)
+f = new FileOutputStream(FileServer.getFileServer().getBaseDir()+File.separator+File.separator+cal_create_date+&quot;_ProjectNo_&quot;+user_no+&quot;_AuthCopyInput.tsv&quot;, true); 
+p = new PrintStream(f); 
+
+// Close File(s)
+p.close();f.close();</stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="00.Get Cert Thread Group" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
@@ -115,7 +205,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cert_Asset_ID list with header" enabled="true">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cert_Asset_ID list with header">
           <stringProp name="cacheKey">false</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
@@ -316,9 +406,9 @@ props.put(&quot;Access_Token&quot;, token);
 //${__setProperty(Access_Token, ${access_token})};</stringProp>
         </JSR223Sampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert Count">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert Count" enabled="true">
           <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
-          <stringProp name="HTTPSampler.path">/${Environment_Path}/certificates/summary</stringProp>
+          <stringProp name="HTTPSampler.path">${Environment_Path}/certificates/summary</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -343,7 +433,7 @@ props.put(&quot;Access_Token&quot;, token);
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_PL_body">
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PrePro_PL_body" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -392,93 +482,69 @@ result.append(&apos;\n&apos;);
 //searchParameters blob starts here
 result.append(&quot;\&quot;searchParameters\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-var_ccn = vars.get(&quot;ccn&quot;);
-if (var_ccn != &quot;&quot; &amp;&amp; var_ccn != null) {
-	result.append(&quot;\&quot;ccn\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${ccn}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_applicant_file = vars.get(&quot;applicant_file&quot;);
-if (var_applicant_file != &quot;&quot; &amp;&amp; var_applicant_file != null) {
-	result.append(&quot;\&quot;fileNumber\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${applicant_file}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_product_type = vars.get(&quot;product_type&quot;);
-if (var_product_type != &quot;&quot; &amp;&amp; var_product_type != null) {
-	result.append(&quot;\&quot;productType\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${product_type}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-}
-var_cert_mark = vars.get(&quot;cert_mark&quot;);
-if (var_cert_mark != &quot;&quot; &amp;&amp; var_cert_mark != null) {
-	result.append(&quot;\&quot;mark\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_mark}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_cert_body = vars.get(&quot;cert_body&quot;);
-if (var_cert_body != &quot;&quot; &amp;&amp; var_cert_body != null) {
-	result.append(&quot;\&quot;issuingBody\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_body}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_owner_ref = vars.get(&quot;owner_ref&quot;);
-if (var_owner_ref != &quot;&quot; &amp;&amp; var_owner_ref != null) {
-	result.append(&quot;\&quot;ownerReference\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${owner_ref}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_cert_no = vars.get(&quot;cert_no&quot;);
-if (var_cert_no != &quot;&quot; &amp;&amp; var_cert_no != null) {
-	result.append(&quot;\&quot;certificateName\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_no}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_cert_type = vars.get(&quot;cert_scheme&quot;);
-if (var_cert_type != &quot;&quot; &amp;&amp; var_cert_type != null) {
-	result.append(&quot;\&quot;certificateType\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_scheme}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;}&quot;);
-	result.append(&apos;\n&apos;);
-}
+result.append(&quot;\&quot;ccn\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${ccn}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;fileNumber\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${applicant_file}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;productType\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${product_type}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&quot;\&quot;mark\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_mark}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;issuingBody\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_body}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;ownerReference\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${owner_ref}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;certificateName\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_no}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;certificateType\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_scheme}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;}&quot;);
+result.append(&apos;\n&apos;);
 result.append(&quot;},&quot;);
 //searchParameters blob ends here
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -583,9 +649,8 @@ vars.put(&quot;Model_jsonData&quot;, result.toString());
           <stringProp name="script">import java.text.*;
 import java.util.*;
 
-log.info(vars.get(&quot;T1_Cert_Total_Count&quot;));
 def pl_count = (vars.get(&quot;T1_Cert_Total_Count&quot;)).toInteger();
-log.info(pl_count.toString());
+//log.info(&quot;cert_count:&quot; + pl_count.toString());
 
 if(pl_count &gt; 400) 
 	{
@@ -696,9 +761,9 @@ log.info(new_offset.toString());
 vars.put(&quot;new_offset&quot;, new_offset.toString());</stringProp>
           </JSR223Sampler>
           <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert ID">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Cert ID" enabled="true">
             <stringProp name="TestPlan.comments">Paginated Certificate Search </stringProp>
-            <stringProp name="HTTPSampler.path">/${Environment_Path}/certificates/summary</stringProp>
+            <stringProp name="HTTPSampler.path">${Environment_Path}/certificates/summary</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
             <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -772,93 +837,69 @@ result.append(&apos;\n&apos;);
 //searchParameters blob starts here
 result.append(&quot;\&quot;searchParameters\&quot; : {&quot;);
 result.append(&apos;\n&apos;);
-var_ccn = vars.get(&quot;ccn&quot;);
-if (var_ccn != &quot;&quot; &amp;&amp; var_ccn != null) {
-	result.append(&quot;\&quot;ccn\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${ccn}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_applicant_file = vars.get(&quot;applicant_file&quot;);
-if (var_applicant_file != &quot;&quot; &amp;&amp; var_applicant_file != null) {
-	result.append(&quot;\&quot;fileNumber\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${applicant_file}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_product_type = vars.get(&quot;product_type&quot;);
-if (var_product_type != &quot;&quot; &amp;&amp; var_product_type != null) {
-	result.append(&quot;\&quot;productType\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${product_type}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-}
-var_cert_mark = vars.get(&quot;cert_mark&quot;);
-if (var_cert_mark != &quot;&quot; &amp;&amp; var_cert_mark != null) {
-	result.append(&quot;\&quot;mark\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_mark}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_cert_body = vars.get(&quot;cert_body&quot;);
-if (var_cert_body != &quot;&quot; &amp;&amp; var_cert_body != null) {
-	result.append(&quot;\&quot;issuingBody\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_body}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_owner_ref = vars.get(&quot;owner_ref&quot;);
-if (var_owner_ref != &quot;&quot; &amp;&amp; var_owner_ref != null) {
-	result.append(&quot;\&quot;ownerReference\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${owner_ref}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_cert_no = vars.get(&quot;cert_no&quot;);
-if (var_cert_no != &quot;&quot; &amp;&amp; var_cert_no != null) {
-	result.append(&quot;\&quot;certificateName\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_no}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;},&quot;);
-	result.append(&apos;\n&apos;);
-}
-var_cert_type = vars.get(&quot;cert_scheme&quot;);
-if (var_cert_type != &quot;&quot; &amp;&amp; var_cert_type != null) {
-	result.append(&quot;\&quot;certificateType\&quot; : {&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;\&quot;value\&quot; : \&quot;${cert_scheme}\&quot;&quot;);
-	result.append(&apos;\n&apos;);
-	result.append(&quot;}&quot;);
-	result.append(&apos;\n&apos;);
-}
+result.append(&quot;\&quot;ccn\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${ccn}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;fileNumber\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${applicant_file}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;productType\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${product_type}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&quot;\&quot;mark\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_mark}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;issuingBody\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_body}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;ownerReference\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;${operator}\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${owner_ref}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;certificateName\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_no}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;},&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;certificateType\&quot; : {&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;operator\&quot; : \&quot;like\&quot;,&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;\&quot;value\&quot; : \&quot;${cert_scheme}\&quot;&quot;);
+result.append(&apos;\n&apos;);
+result.append(&quot;}&quot;);
+result.append(&apos;\n&apos;);
 result.append(&quot;},&quot;);
 //searchParameters blob ends here
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1029,11 +1070,16 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_body = pl_Object.getString(&quot;issuingBody&quot;); 
 	String cert_mark = pl_Object.getString(&quot;mark&quot;); 
 	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
+	log.info(&quot;cert_num: &quot; + cert_num.toString());
 	try {
-		if(pl_Object.keys() != &quot;revisionNumber&quot;) {
-			cert_rev_num = &quot;&quot;; 					
+		log.info(&quot;I am in try-catch&quot;);
+		if(pl_Object.getString.has(&quot;revisionNumber&quot;)) {
+			String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);
+			log.info(&quot;I am here&quot;);
+			log.info(&quot;cert_rev_num:&quot; + cert_rev_num.toString());
 		} else {
-			String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;); 
+			String cert_rev_num = &quot;&quot;; 
+			log.info(&quot;I don&apos;t want to be here&quot;);
 		}
 	}
 	catch (ParseException e) {
@@ -1053,7 +1099,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	cert_issue_date_need_format = pl_Object.getString(&quot;issueDate&quot;);
 	log.info(&quot;cert_issue_date_need_format:&quot; +cert_issue_date_need_format.toString());
 	if (!cert_issue_date_need_format.isEmpty()){
-		log.info(&quot;true&quot;);	
+		//log.info(&quot;true&quot;);	
 		try{
 			cert_issue_date_format = new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss.SSS&quot;).parse(cert_issue_date_need_format);
 			//log.info(&quot;cert_issue_date_format:&quot; +cert_issue_date_format.toString());	
@@ -1066,7 +1112,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 					e.printStackTrace();
 				}
 	} else {
-		log.info(&quot;false&quot;);
+		//log.info(&quot;false&quot;);
 		cert_issue_date = &quot;&quot;;
 		log.info(&quot;cert_issue_date&quot; + cert_issue_date);
 	}
