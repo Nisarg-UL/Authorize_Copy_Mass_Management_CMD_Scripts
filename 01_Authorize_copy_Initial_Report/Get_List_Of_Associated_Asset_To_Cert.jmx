@@ -1070,8 +1070,10 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_body = pl_Object.getString(&quot;issuingBody&quot;); 
 	String cert_mark = pl_Object.getString(&quot;mark&quot;); 
 	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
+	log.info(&quot;cert_num:&quot; + cert_num.toString());
 	try {
-		if(pl_Object.toString().has(&quot;revisionNumber&quot;)) {
+		log.info(&quot;I am in try-catch&quot;);
+		if(pl_Object.getString.has(&quot;revisionNumber&quot;)) {
 			String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);
 			log.info(&quot;I am here&quot;);
 			log.info(&quot;cert_rev_num:&quot; + cert_rev_num.toString());
