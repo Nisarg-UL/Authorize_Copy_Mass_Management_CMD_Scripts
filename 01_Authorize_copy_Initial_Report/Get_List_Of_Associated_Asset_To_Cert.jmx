@@ -1073,11 +1073,8 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	try {
 		if(pl_Object.has(&quot;revisionNumber&quot;)) {
 			cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);
-			log.info(&quot;I am here&quot;);
-			log.info(&quot;cert_rev_num:&quot; + cert_rev_num.toString());
 		} else {
 			cert_rev_num = &quot;&quot;; 
-			log.info(&quot;I don&apos;t want to be here&quot;);
 		}
 	}
 	catch (ParseException e) {
@@ -1095,7 +1092,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_new_issue_date = &quot;&quot;; 
 	
 	cert_issue_date_need_format = pl_Object.getString(&quot;issueDate&quot;);
-	log.info(&quot;cert_issue_date_need_format:&quot; +cert_issue_date_need_format.toString());
+//	log.info(&quot;cert_issue_date_need_format:&quot; +cert_issue_date_need_format.toString());
 	if (!cert_issue_date_need_format.isEmpty()){
 		//log.info(&quot;true&quot;);	
 		try{
