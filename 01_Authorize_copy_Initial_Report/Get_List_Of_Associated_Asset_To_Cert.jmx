@@ -205,7 +205,7 @@ p.close();f.close();</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cert_Asset_ID list with header">
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Cert_Asset_ID list with header" enabled="true">
           <stringProp name="cacheKey">false</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
@@ -1070,14 +1070,13 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 	String cert_body = pl_Object.getString(&quot;issuingBody&quot;); 
 	String cert_mark = pl_Object.getString(&quot;mark&quot;); 
 	String cert_num = pl_Object.getString(&quot;certificateName&quot;); 
-	log.info(&quot;cert_num: &quot; + cert_num.toString());
 	try {
 		if(pl_Object.has(&quot;revisionNumber&quot;)) {
-			String cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);
+			cert_rev_num = pl_Object.getString(&quot;revisionNumber&quot;);
 			log.info(&quot;I am here&quot;);
 			log.info(&quot;cert_rev_num:&quot; + cert_rev_num.toString());
 		} else {
-			String cert_rev_num = &quot;&quot;; 
+			cert_rev_num = &quot;&quot;; 
 			log.info(&quot;I don&apos;t want to be here&quot;);
 		}
 	}
