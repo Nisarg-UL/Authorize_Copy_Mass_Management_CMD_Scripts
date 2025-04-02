@@ -1077,6 +1077,7 @@ for(int pl=0 ; pl &lt; PL_count; pl++){ // iterate through jsonArray
 			log.info(&quot;cert_rev_num:&quot; + cert_rev_num.toString());
 		} else {
 			String cert_rev_num = &quot;&quot;; 
+			log.info(&quot;I don&apos;t want to be here&quot;);
 		}
 	}
 	catch (ParseException e) {
